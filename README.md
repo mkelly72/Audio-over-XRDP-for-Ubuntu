@@ -5,4 +5,4 @@ I use Ubuntu on Hyper-V, and as you may know the only way to get proper video an
 
 I use this script for my own purposes, so as long as it works for me I don't plan on frequently updating it. But feel free to use it, copy it, fork it, unfork it, whatever.
 
-Just download the script, make it executable, and run it. It should work for any .deb based distros, but I only tested it on my own Ubuntu system.
+Just download the script, make it executable, and run it as the local user, but be prepared to supply a SUDO password. It should work for any .deb based distros, but I only tested it on my own Ubuntu system.
