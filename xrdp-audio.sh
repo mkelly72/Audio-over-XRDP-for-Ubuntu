@@ -3,15 +3,16 @@
 # To get audio working in xrdp
 
 ### Download and install dependencies and sources
+sudo apt-get update
 sudo apt-get install git libpulse-dev autoconf m4 intltool build-essential dpkg-dev libtool libsndfile-dev libspeexdsp-dev libudev-dev -y
 sudo cp /etc/apt/sources.list /etc/apt/sources.list~
+# The following line enables you to download from the source repositories
 sudo sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-sudo apt-get update
 sudo apt build-dep pulseaudio -y
 cd /tmp
 sudo apt source pulseaudio
 
-### Build
+### Build and install
 pulsever=$(ls -d /tmp/pulseaudio*/ | head -c -1)
 cd $pulsever
 # This configure file may not exist - seems to build without it anyway
@@ -20,7 +21,6 @@ if test -f ./configure; then
 fi
 sudo meson build
 sudo meson compile -C build
-# sudo build/src/daemon/pulseaudio -n -F build/src/daemon/default.pa -p $(pwd)/build/src/modules/
 sudo git clone https://github.com/neutrinolabs/pulseaudio-module-xrdp.git
 cd pulseaudio-module-xrdp
 sudo ./bootstrap
