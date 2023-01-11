@@ -38,7 +38,7 @@ systemctl --user enable pulseaudio
 cd ~
 echo "systemctl --user restart pulseaudio" >> ~/.pulse.sh
 chmod +x ~/.pulse.sh
-if test [ ! -f /$HOME/.config/autostart/pulsefix.desktop ]; then
+if [ ! -f /$HOME/.config/autostart/pulsefix.desktop ]; then
 tee /$HOME/.config/autostart/pulsefix.desktop <<EOF
 [Desktop Entry]
 Type=Application
