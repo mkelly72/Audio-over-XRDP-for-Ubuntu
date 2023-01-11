@@ -34,4 +34,23 @@ sudo killall pulseaudio
 systemctl --user start pulseaudio
 systemctl --user enable pulseaudio
 
+### Add ~/.pulse.sh to Startup Applications to fix initial startup issues
+cd ~
+echo "systemctl --user restart pulseaudio" >> ~/.pulse.sh
+chmod +x ~/.pulse.sh
+if test [ ! -f /$HOME/.config/autostart/pulsefix.desktop ]; then
+tee /$HOME/.config/autostart/pulsefix.desktop <<EOF
+[Desktop Entry]
+Type=Application
+Exec=gnome-terminal -- $HOME/.pulse.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Restart Pulseaudio
+Name=Restart Pulseaudio
+Comment[en_US]=
+Comment=
+EOF
+fi
+
 exit 0
