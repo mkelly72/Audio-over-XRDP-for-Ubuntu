@@ -38,18 +38,17 @@ systemctl --user enable pulseaudio
 cd ~
 echo "systemctl --user restart pulseaudio" >> ~/.pulse.sh
 chmod +x ~/.pulse.sh
-if [ ! -f /$HOME/.config/autostart/pulsefix.desktop ]; then
-tee /$HOME/.config/autostart/pulsefix.desktop <<EOF
+if [ ! -f /$HOME/.config/autostart/.pulse.desktop ]; then
+tee /$HOME/.config/autostart/.pulse.desktop <<EOF
+
 [Desktop Entry]
-Type=Application
-Exec=gnome-terminal -- $HOME/.pulse.sh
-Hidden=false
-NoDisplay=false
-X-GNOME-Autostart-enabled=true
-Name[en_US]=Restart Pulseaudio
+Exec=/home/mkk/.pulse.sh
+Icon=dialog-scripts
 Name=Restart Pulseaudio
-Comment[en_US]=
-Comment=
+Path=
+Type=Application
+X-KDE-AutostartScript=true
+X-GNOME-Autostart-enabled=true
 EOF
 fi
 
