@@ -36,10 +36,14 @@ systemctl --user enable pulseaudio
 
 ### Add ~/.pulse.sh to Startup Applications to fix initial startup issues
 cd ~
-echo "systemctl --user restart pulseaudio" >> ~/.pulse.sh
+tee ~/.pulse.sh <<EOF
+#!/bin/bash
+systemctl --user restart pulseaudio"
+EOF
+
 chmod +x ~/.pulse.sh
-if [ ! -f /$HOME/.config/autostart/.pulse.desktop ]; then
-tee /$HOME/.config/autostart/.pulse.desktop <<EOF
+if [ ! -f /$HOME/.config/autostart/.pulse.sh.desktop ]; then
+tee /$HOME/.config/autostart/.pulse.sh.desktop <<EOF
 
 [Desktop Entry]
 Exec=/home/mkk/.pulse.sh
