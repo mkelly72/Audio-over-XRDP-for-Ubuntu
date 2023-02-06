@@ -39,6 +39,7 @@ cd /$HOME
 tee /$HOME/.pulse.sh <<EOF
 #!/bin/bash
 systemctl --user restart pulseaudio"
+exit 0
 EOF
 
 chmod +x ~/.pulse.sh
