@@ -27,7 +27,7 @@ sudo ./bootstrap
 sudo ./configure PULSE_DIR="$pulsever"
 sudo make
 cd src/.libs
-sudo install -t "/var/lib/xrdp-pulseaudio-installer" -D -m 644 *.so
+sudo install -t "/var/lib/xrdp-pulseaudio-installer" -D -m 755 *.so
 
 ### Start and enable service
 sudo killall pulseaudio
